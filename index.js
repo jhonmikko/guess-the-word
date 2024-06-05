@@ -17,13 +17,14 @@ function startNewGame(){
 
     const ranWord = wordList[Math.floor(Math.random() * wordList.length)];
     word = ranWord.word;
-
+    console.log(word);
     maxGuesses = word.length >= 5 ? 8 : 6;
     incorrectLetters = [];
     correctLetters = [];
     hintTag.innerText = ranWord.hint;
     guessLeft.innerText = maxGuesses;
-    mistakes.innertText = incorrectLetters;
+
+    mistakes.innerText = incorrectLetters;
 
     inputs.innerHTML = "";
     for(let i = 0; i < word.length; i++){
@@ -54,12 +55,12 @@ function handleInput(e){
 
     guessLeft.innertText = maxGuesses;
     if(correctLetters.length === word.length){
-        alert(`Congrats! You Guessed The Word ${word.toUpperCase}`);
+        alert(`Congrats! You Guessed The Word ${word.toUpperCase()}`);
         startNewGame();
     }else if(maxGuesses < 1){
         alert("Game Over! You don't have remaining guesses!");
         for(let i = 0; i < word.length; i++){
-            inputs.querySelectorAll("inputs")[i].value = word[i];
+            inputs.querySelectorAll("input")[i].value = word[i];
         }
     }
 
